@@ -12,6 +12,8 @@ log = logging.getLogger('player.Player')
 log.addHandler(logging.StreamHandler(sys.stderr))
 log.setLevel(logging.DEBUG)
 
+TWO_PAIRS = 2
+
 
 class Player:
     VERSION_FORMAT = "Cautious parrot [config: {config}]"
@@ -30,7 +32,7 @@ class Player:
         hand_cards = current_player['hole_cards']
         all_cards = hand_cards + game_state['community_cards']
 
-        ranking_service_all_cards = RankingHelper(all_cards)
+        ranking_service = RankingHelper(all_cards)
 
         all_in_value = current_player["stack"]
         minimum_raise = int(game_state["minimum_raise"])
@@ -40,7 +42,7 @@ class Player:
 
         call_value = game_state['current_buy_in'] - current_player['bet'] + game_state['minimum_raise']
         active_player_count = len(filter(lambda player: player["status"] == "active", game_state["players"]))
-        chen_ranking = ranking_service_all_cards.get_chen_ranking()
+        chen_ranking = ranking_service.get_chen_ranking()
 
         if is_preflop:
             if active_player_count == 2:
@@ -63,10 +65,15 @@ class Player:
                 bet = min(call_value, all_in_value/2)
         else:
             if self.config.post_flop:
-                # new post flop code here
-                pass
+                ranking = ranking_service.get_ranking()
+                if ranking == 0:
+                    bet = 0
+                elif ranking == 1:
+                    bet = min(call_value, all_in_value / 2)
+                elif ranking >= TWO_PAIRS:
+                    bet = all_in_value
             else:
-                if hand_cards[0]['rank'] == hand_cards[1]['rank']:
+                if ranking_service.is_pair():
                     if hand_cards[0]['rank'] in ("Q", "K", "A"):
                         bet = call_value + self.config.bet_on_high_pair
                         log.info('decision betting: %d', bet)
