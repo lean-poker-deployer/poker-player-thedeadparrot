@@ -12,12 +12,10 @@ log = logging.getLogger('player.Player')
 log.addHandler(logging.StreamHandler(sys.stderr))
 log.setLevel(logging.DEBUG)
 
+config = Config(False)
 
 class Player:
     VERSION = "Cautious parrot"
-
-    def __init__(self, test=False):
-        self.config = Config(test)
 
     def betRequest(self, game_state):
         in_action = game_state['in_action']
@@ -30,11 +28,11 @@ class Player:
 
         if hand_cards[0]['rank'] == hand_cards[1]['rank']:
             if hand_cards[0]['rank'] in ("Q", "K", "A"):
-                bet = call_value + self.config.bet_on_high_pair + randint(100, 200)
+                bet = call_value + config.bet_on_high_pair + randint(100, 200)
                 log.info('decision betting: %d', bet)
                 return bet
 
-            bet = call_value + self.config.bet_on_pair
+            bet = call_value + config.bet_on_pair
             log.info('decision betting: %d', bet)
             return bet
 
