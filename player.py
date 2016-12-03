@@ -29,8 +29,9 @@ class Player:
         current_player = game_state['players'][in_action]
         hand_cards = current_player['hole_cards']
         all_cards = hand_cards + game_state['community_cards']
+
         ranking_service_all_cards = RankingHelper(all_cards)
-        ranking_service_all_cards.computeFrequencies()
+
         all_in_value = current_player["stack"]
         minimum_raise = int(game_state["minimum_raise"])
         small_blind = int(game_state["small_blind"])
