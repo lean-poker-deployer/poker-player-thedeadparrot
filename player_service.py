@@ -5,6 +5,7 @@ import BaseHTTPServer
 import os
 from player import Player
 
+from config import Config
 
 HOST_NAME = '0.0.0.0'
 PORT_NUMBER = os.environ.has_key('PORT') and int(os.environ['PORT']) or 9000
@@ -40,7 +41,7 @@ class PlayerService(BaseHTTPServer.BaseHTTPRequestHandler):
         elif action == 'showdown':
             Player().showdown(game_state)
         elif action == 'version':
-            response = Player.VERSION
+            response = Config.get_instance().version
 
         self.wfile.write(response)
 
