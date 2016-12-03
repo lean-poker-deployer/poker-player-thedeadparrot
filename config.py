@@ -14,8 +14,8 @@ class Config(object):
     version = 'config not loaded'
     refresh_interval = 5
     bet_on_high_card = 0
-    bet_on_pair = 0
-    bet_on_high_pair = 1000
+    bet_on_pair = 100
+    bet_on_high_pair = 200
 
     def __init__(self, test=False):
         self.log = player.log
