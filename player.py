@@ -1,5 +1,7 @@
 import logging
 
+log = logging.getLogger('player.Player')
+
 class Player:
     VERSION = "The Dead Parrot"
 
