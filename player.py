@@ -59,7 +59,7 @@ class Player:
                     bet = minimum_raise * 2
 
             if minimum_raise > small_blind * 8 and chen_ranking >= self.config.high_raise_min_chen_ranking:
-                bet = all_in_value
+                bet = min(call_value, all_in_value/2)
         else:
             if hand_cards[0]['rank'] == hand_cards[1]['rank']:
                 if hand_cards[0]['rank'] in ("Q", "K", "A"):
