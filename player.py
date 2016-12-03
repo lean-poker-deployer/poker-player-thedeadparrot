@@ -44,13 +44,13 @@ class Player:
         if is_preflop:
             if active_player_count == 2:
                 if chen_ranking >= 4.5:
-                    bet = all_in_value
+                    bet = min(call_value, all_in_value/2)
             elif active_player_count == 3:
                 if chen_ranking >= 5.5:
-                    bet = all_in_value
+                    bet = min(call_value, all_in_value/2)
             elif active_player_count == 4:
                 if chen_ranking >= 6:
-                    bet = all_in_value
+                    bet = min(call_value, all_in_value/2)
 
             if bet != all_in_value:
                 did_somebody_raise = minimum_raise >= small_blind * 2
