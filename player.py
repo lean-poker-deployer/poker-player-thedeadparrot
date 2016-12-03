@@ -31,7 +31,7 @@ class Player:
                 log.info('decision betting: %d', bet)
                 return bet
 
-            bet = call_value + self.config.bet_on_pair
+            bet = self.config.bet_on_pair
             log.info('decision betting: %d', bet)
             return bet
 
