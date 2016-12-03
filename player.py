@@ -7,7 +7,7 @@ import sys
 
 from ranking_helper import RankingHelper
 
-logging.basicConfig(format='%(levelname)s %(lineno)d:%(funcName)s %(message)s')
+# logging.basicConfig(format='%(levelname)s %(lineno)d:%(funcName)s %(message)s')
 log = logging.getLogger('player.Player')
 log.addHandler(logging.StreamHandler(sys.stderr))
 log.setLevel(logging.DEBUG)
