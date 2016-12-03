@@ -16,9 +16,13 @@ class Player:
 
         if cards[0]['rank'] == cards[1]['rank']:
             if cards[0]['rank'] in ("Q", "K", "A"):
+                log.info('All in (or at least 1000)')
                 return 1000
+
+            log.info('Call!')
             return call_value
 
+        log.info('Fold!')
         return 0
 
     def showdown(self, game_state):
