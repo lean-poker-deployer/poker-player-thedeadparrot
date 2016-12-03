@@ -8,7 +8,7 @@ from config import Config
 
 class PlayerTest(unittest.TestCase):
     def setUp(self):
-        player.config = Config(True)
+        Config.get_instance(test=True)
         self.player = Player()
 
     def test_bet_request_should_return_integer(self):

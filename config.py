@@ -6,6 +6,7 @@ import time
 
 CONFIG_JSON_URL = 'https://dl.dropboxusercontent.com/u/819938/leanpoker/config.json'
 
+config_instance = None
 
 class Config(object):
     version = 'config not loaded'
@@ -15,9 +16,17 @@ class Config(object):
     bet_on_high_pair = 1000
 
     def __init__(self, test=False):
-        # if not test:
-        #     self._start_thread()
-        pass
+        if not test:
+            self._start_thread()
+
+    @staticmethod
+    def get_instance(*args, **kwargs):
+        global config_instance
+
+        if config_instance is None:
+            config_instance = Config(*args, **kwargs)
+
+        return config_instance
 
     def load(self):
         r = urllib.urlopen(CONFIG_JSON_URL)

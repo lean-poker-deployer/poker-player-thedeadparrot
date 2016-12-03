@@ -14,7 +14,9 @@ log.setLevel(logging.DEBUG)
 
 class Player:
     VERSION = "Cautious parrot"
-    config = Config()
+
+    def __init__(self):
+        self.config = Config.get_instance()
 
     def betRequest(self, game_state):
         in_action = game_state['in_action']
