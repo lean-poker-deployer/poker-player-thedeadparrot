@@ -43,13 +43,13 @@ class Player:
 
         if is_preflop:
             if active_player_count == 2:
-                if chen_ranking >= 4.5:
+                if chen_ranking >= self.config.count_2_min_chen_ranking:
                     bet = min(call_value, all_in_value/2)
             elif active_player_count == 3:
-                if chen_ranking >= 5.5:
+                if chen_ranking >= self.config.count_3_min_chen_ranking:
                     bet = min(call_value, all_in_value/2)
             elif active_player_count == 4:
-                if chen_ranking >= 6:
+                if chen_ranking >= self.config.count_4_min_chen_ranking:
                     bet = min(call_value, all_in_value/2)
 
             if bet != all_in_value:
@@ -58,7 +58,7 @@ class Player:
                 if not did_somebody_raise:
                     bet = minimum_raise * 2
 
-            if minimum_raise > small_blind * 8 and chen_ranking >= 7.5:
+            if minimum_raise > small_blind * 8 and chen_ranking >= self.config.high_raise_min_chen_ranking:
                 bet = all_in_value
         else:
             if hand_cards[0]['rank'] == hand_cards[1]['rank']:

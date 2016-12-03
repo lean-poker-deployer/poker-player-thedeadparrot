@@ -16,6 +16,10 @@ class Config(object):
     bet_on_high_card = 0
     bet_on_pair = 100
     bet_on_high_pair = 200
+    count_2_min_chen_ranking = 4.5
+    count_3_min_chen_ranking = 5.5
+    count_4_min_chen_ranking = 6
+    high_raise_min_chen_ranking = 6
 
     def __init__(self, test=False):
         self.log = player.log
