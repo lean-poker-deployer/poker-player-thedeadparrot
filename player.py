@@ -4,6 +4,7 @@ from random import randint
 
 import sys
 
+logging.basicConfig(format='%(levelname)s %(lineno)d:%(funcName)s %(message)s')
 log = logging.getLogger('player.Player')
 log.addHandler(logging.StreamHandler(sys.stderr))
 log.setLevel(logging.DEBUG)
