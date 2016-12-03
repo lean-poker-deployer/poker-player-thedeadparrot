@@ -6,7 +6,7 @@ from player import Player
 
 class PlayerTest(unittest.TestCase):
     def setUp(self):
-        self.player = Player()
+        self.player = Player(test=True)
 
     def test_bet_request_should_return_integer(self):
         with open('GameState.json') as json_file:
