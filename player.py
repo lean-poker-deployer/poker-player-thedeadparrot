@@ -22,6 +22,8 @@ class Player:
         self.VERSION = self.VERSION_FORMAT.format(config=self.config.version)
 
     def betRequest(self, game_state):
+        log.info('player version: %s', self.config.version)
+
         bet = 0
         in_action = game_state['in_action']
         current_player = game_state['players'][in_action]
