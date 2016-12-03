@@ -3,6 +3,7 @@ import json
 
 from player import Player
 
+
 class PlayerTest(unittest.TestCase):
     def setUp(self):
         self.player = Player()

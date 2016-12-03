@@ -34,7 +34,6 @@ class PlayerService(BaseHTTPServer.BaseHTTPRequestHandler):
         else:
             game_state = {}
 
-
         response = ''
         if action == 'bet_request':
             response = Player().betRequest(game_state)
