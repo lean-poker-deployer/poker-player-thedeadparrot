@@ -14,10 +14,12 @@ log.setLevel(logging.DEBUG)
 
 
 class Player:
+    VERSION_FORMAT = "Cautious parrot [config: {config}]"
     VERSION = "Cautious parrot"
 
     def __init__(self):
         self.config = Config.get_instance()
+        self.VERSION = self.VERSION_FORMAT.format(config=self.config.version)
 
     def betRequest(self, game_state):
         bet = 0

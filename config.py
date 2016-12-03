@@ -9,6 +9,7 @@ CONFIG_JSON_URL = 'https://dl.dropboxusercontent.com/u/819938/leanpoker/config.j
 
 config_instance = None
 
+
 class Config(object):
     version = 'config not loaded'
     refresh_interval = 5
