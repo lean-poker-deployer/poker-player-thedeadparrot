@@ -30,4 +30,4 @@ class Player:
         return 0
 
     def showdown(self, game_state):
-        log.info("number_of_community_cards", len(game_state['community_cards']))
+        log.info("number_of_community_cards %d", len(game_state['community_cards']))
