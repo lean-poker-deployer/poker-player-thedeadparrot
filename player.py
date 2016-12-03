@@ -15,8 +15,8 @@ class Player:
 
         if cards[0]['rank'] == cards[1]['rank']:
             if cards[0]['rank'] in ("Q", "K", "A"):
-                return call_value
-            return 1000
+                return 1000
+            return call_value
 
         return 0
 
