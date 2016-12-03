@@ -15,8 +15,9 @@ class Config(object):
     bet_on_high_pair = 1000
 
     def __init__(self, test=False):
-        if not test:
-            self._start_thread()
+        # if not test:
+        #     self._start_thread()
+        pass
 
     def load(self):
         r = urllib.urlopen(CONFIG_JSON_URL)

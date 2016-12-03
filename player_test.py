@@ -1,12 +1,15 @@
 import unittest
 import json
 
+import player
 from player import Player
+from config import Config
 
 
 class PlayerTest(unittest.TestCase):
     def setUp(self):
-        self.player = Player(test=True)
+        player.config = Config(True)
+        self.player = Player()
 
     def test_bet_request_should_return_integer(self):
         with open('GameState.json') as json_file:
