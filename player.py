@@ -13,7 +13,7 @@ log.setLevel(logging.DEBUG)
 
 
 class Player:
-    VERSION = "Cautios parrot"
+    VERSION = "Cautious parrot"
 
     def betRequest(self, game_state):
         in_action = game_state['in_action']
