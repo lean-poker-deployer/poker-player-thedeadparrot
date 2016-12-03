@@ -1,7 +1,11 @@
 import json
 import logging
 
+import sys
+
 log = logging.getLogger('player.Player')
+log.addHandler(logging.StreamHandler(sys.stderr))
+log.setLevel(logging.DEBUG)
 
 class Player:
     VERSION = "The Dead Parrot"
