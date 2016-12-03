@@ -69,17 +69,12 @@ class Player:
                 if ranking == 0:
                     bet = 0
                 elif ranking == 1:
-                    bet = min(call_value, all_in_value / 2)
+                    bet = self._handle_one_pair(call_value, hand_cards)
                 elif ranking >= TWO_PAIRS:
                     bet = all_in_value
             else:
                 if ranking_service.is_pair():
-                    if hand_cards[0]['rank'] in ("Q", "K", "A"):
-                        bet = call_value + self.config.bet_on_high_pair
-                        log.info('decision betting: %d', bet)
-                    else:
-                        bet = self.config.bet_on_pair
-                        log.info('decision betting: %d', bet)
+                    bet = self._handle_one_pair(call_value, hand_cards)
                 else:
                     log.info('decision fold')
                     return 0
@@ -88,6 +83,15 @@ class Player:
             if current_player['bet'] > all_in_value * self.config.max_stack_ratio:
                 return call_value
 
+        return bet
+
+    def _handle_one_pair(self, call_value, hand_cards):
+        if hand_cards[0]['rank'] in ("Q", "K", "A"):
+            bet = call_value + self.config.bet_on_high_pair
+            log.info('decision betting: %d', bet)
+        else:
+            bet = self.config.bet_on_pair
+            log.info('decision betting: %d', bet)
         return bet
 
     def showdown(self, game_state):
