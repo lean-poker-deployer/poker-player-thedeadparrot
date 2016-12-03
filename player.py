@@ -1,5 +1,6 @@
 import json
 import logging
+from random import randint
 
 import sys
 
@@ -9,7 +10,7 @@ log.setLevel(logging.DEBUG)
 
 
 class Player:
-    VERSION = "The Dead Parrot"
+    VERSION = "Cautios parrot"
 
     def betRequest(self, game_state):
         in_action = game_state['in_action']
@@ -21,7 +22,7 @@ class Player:
         if cards[0]['rank'] == cards[1]['rank']:
             if cards[0]['rank'] in ("Q", "K", "A"):
                 log.info('All in (or at least 1000)')
-                return 1000
+                return call_value + randint(100, 200)
 
             log.info('Call!')
             return call_value
