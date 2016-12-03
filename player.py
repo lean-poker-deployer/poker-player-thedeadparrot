@@ -12,8 +12,6 @@ log = logging.getLogger('player.Player')
 log.addHandler(logging.StreamHandler(sys.stderr))
 log.setLevel(logging.DEBUG)
 
-TWO_PAIRS = 2
-
 
 class Player:
     VERSION_FORMAT = "Cautious parrot [config: {config}]"
@@ -68,9 +66,9 @@ class Player:
                 ranking = ranking_service.get_ranking()
                 if ranking == 0:
                     bet = 0
-                elif ranking == 1:
+                elif ranking in {RankingHelper.RANKING_ONE_PAIR, RankingHelper.RANKING_TWO_PAIRS}:
                     bet = self._handle_one_pair(call_value, hand_cards)
-                elif ranking >= TWO_PAIRS:
+                elif ranking >= RankingHelper.RANKING_STRAIGHT:
                     bet = all_in_value
             else:
                 if ranking_service.is_pair():

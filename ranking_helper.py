@@ -6,6 +6,13 @@ class RankingHelper:
     _rank2value = {"J": 11, "Q": 12, "K": 13, "A": 14}
     _rank2chenvalue = {"J": 6, "Q": 7, "K": 8, "A": 10}
     STRAIGHT_VALUES = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+    RANKING_ONE_PAIR = 1
+    RANKING_TWO_PAIRS = 2
+    RANKING_DRILL = 3
+    RANKING_STRAIGHT = 4
+    RANKING_FLUSH = 5
+    RANKING_FULL = 6
+    RANKING_POKER = 7
 
     def __init__(self, cards):
         self._ranks = dict()
@@ -107,17 +114,17 @@ class RankingHelper:
 
     def get_ranking(self):
         if self.is_poker():
-            return 7
+            return self.RANKING_POKER
         if self.is_full():
-            return 6
+            return self.RANKING_FULL
         if self.is_flush():
-            return 5
+            return self.RANKING_FLUSH
         if self.is_straight():
-            return 4
+            return self.RANKING_DRILL
         if self.is_drill():
-            return 3
+            return self.RANKING_DRILL
         if self.is_two_pairs():
-            return 2
+            return self.RANKING_TWO_PAIRS
         if self.is_pair():
-            return 1
+            return self.RANKING_ONE_PAIR
         return 0
