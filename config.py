@@ -14,14 +14,14 @@ class Config(object):
     version = 'config not loaded'
     refresh_interval = 5
     bet_on_high_card = 0
-    bet_on_pair = 100
-    bet_on_high_pair = 200
-    count_2_min_chen_ranking = 4.5
-    count_3_min_chen_ranking = 5.5
-    count_4_min_chen_ranking = 6
-    high_raise_min_chen_ranking = 6
-    fold_over_max_stack_ratio = False
-    max_stack_ratio = 5
+    bet_on_pair = 125
+    bet_on_high_pair = 175
+    count_2_min_chen_ranking = 7
+    count_3_min_chen_ranking = 8
+    count_4_min_chen_ranking = 9
+    high_raise_min_chen_ranking = 7.5
+    fold_over_max_stack_ratio = True
+    max_stack_ratio = 1.5
     post_flop = False
 
     def __init__(self, test=False):
