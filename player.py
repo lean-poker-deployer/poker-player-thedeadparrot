@@ -27,7 +27,7 @@ class Player:
 
         if hand_cards[0]['rank'] == hand_cards[1]['rank']:
             if hand_cards[0]['rank'] in ("Q", "K", "A"):
-                bet = call_value + self.config.bet_on_high_pair + randint(100, 200)
+                bet = call_value + self.config.bet_on_high_pair
                 log.info('decision betting: %d', bet)
                 return bet
 
