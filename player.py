@@ -65,14 +65,16 @@ class Player:
                 if hand_cards[0]['rank'] in ("Q", "K", "A"):
                     bet = call_value + self.config.bet_on_high_pair
                     log.info('decision betting: %d', bet)
-                    return bet
+                else:
+                    bet = self.config.bet_on_pair
+                    log.info('decision betting: %d', bet)
+            else:
+                log.info('decision fold')
+                return 0
 
-                bet = self.config.bet_on_pair
-                log.info('decision betting: %d', bet)
-                return bet
-
-            log.info('decision fold')
-            return 0
+        if self.config.fold_over_max_stack_ratio:
+            if current_player['bet'] > all_in_value * self.config.max_stack_ratio:
+                return call_value
 
         return bet
 

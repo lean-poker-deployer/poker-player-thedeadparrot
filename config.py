@@ -20,6 +20,8 @@ class Config(object):
     count_3_min_chen_ranking = 5.5
     count_4_min_chen_ranking = 6
     high_raise_min_chen_ranking = 6
+    fold_over_max_stack_ratio = False
+    max_stack_ratio = 5
 
     def __init__(self, test=False):
         self.log = player.log
