@@ -7,6 +7,7 @@ log = logging.getLogger('player.Player')
 log.addHandler(logging.StreamHandler(sys.stderr))
 log.setLevel(logging.DEBUG)
 
+
 class Player:
     VERSION = "The Dead Parrot"
 
@@ -14,7 +15,6 @@ class Player:
         in_action = game_state['in_action']
         current_player = game_state['players'][in_action]
         cards = current_player['hole_cards']
-
 
         call_value = game_state['current_buy_in'] - current_player['bet'] + game_state['minimum_raise']
 
