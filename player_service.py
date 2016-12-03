@@ -41,7 +41,7 @@ class PlayerService(BaseHTTPServer.BaseHTTPRequestHandler):
         elif action == 'showdown':
             Player().showdown(game_state)
         elif action == 'version':
-            response = Config.get_instance().version
+            response = Player.VERSION_FORMAT.format(config=Config.get_instance().version)
 
         self.wfile.write(response)
 
