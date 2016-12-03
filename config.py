@@ -22,6 +22,7 @@ class Config(object):
     high_raise_min_chen_ranking = 6
     fold_over_max_stack_ratio = False
     max_stack_ratio = 5
+    post_flop = False
 
     def __init__(self, test=False):
         self.log = player.log
