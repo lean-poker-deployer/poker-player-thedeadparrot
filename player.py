@@ -1,3 +1,4 @@
+import json
 import logging
 
 log = logging.getLogger('player.Player')
@@ -21,4 +22,5 @@ class Player:
         return 0
 
     def showdown(self, game_state):
+        log.info("game state: %s", json.dumps(game_state))
         pass
