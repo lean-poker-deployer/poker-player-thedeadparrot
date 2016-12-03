@@ -1,8 +1,9 @@
 import json
-import urllib
 import threading
-
 import time
+import urllib
+
+import player
 
 CONFIG_JSON_URL = 'https://dl.dropboxusercontent.com/u/819938/leanpoker/config.json'
 
@@ -16,6 +17,8 @@ class Config(object):
     bet_on_high_pair = 1000
 
     def __init__(self, test=False):
+        self.log = player.log
+
         if not test:
             self._start_thread()
 
@@ -29,11 +32,18 @@ class Config(object):
         return config_instance
 
     def load(self):
-        r = urllib.urlopen(CONFIG_JSON_URL)
-        config_json = json.load(r)
+        try:
+            r = urllib.urlopen(CONFIG_JSON_URL)
+            config_json = json.load(r)
 
-        for k, v in config_json.iteritems():
-            self.__setattr__(k, v)
+            for k, v in config_json.iteritems():
+                self.__setattr__(k, v)
+                self.log.info('config set %s = %s', k, v)
+
+            self.log.info('finished loading config file')
+        except Exception as e:
+            self.log.error('exception caught: %s', e)
+
 
     def _start_thread(self):
         thread = threading.Thread(target=self._load)
