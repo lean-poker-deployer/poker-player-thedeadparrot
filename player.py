@@ -45,13 +45,13 @@ class Player:
         if is_preflop:
             if active_player_count == 2:
                 if chen_ranking >= self.config.count_2_min_chen_ranking:
-                    bet = min(call_value, all_in_value/2)
+                    bet = min(call_value, all_in_value / 2)
             elif active_player_count == 3:
                 if chen_ranking >= self.config.count_3_min_chen_ranking:
-                    bet = min(call_value, all_in_value/2)
+                    bet = min(call_value, all_in_value / 2)
             elif active_player_count == 4:
                 if chen_ranking >= self.config.count_4_min_chen_ranking:
-                    bet = min(call_value, all_in_value/2)
+                    bet = min(call_value, all_in_value / 2)
 
             if bet != all_in_value:
                 did_somebody_raise = minimum_raise >= small_blind * 2
@@ -60,13 +60,14 @@ class Player:
                     bet = minimum_raise * 2
 
             if minimum_raise > small_blind * 8 and chen_ranking >= self.config.high_raise_min_chen_ranking:
-                bet = min(call_value, all_in_value/2)
+                bet = min(call_value, all_in_value / 2)
         else:
             if self.config.post_flop:
                 ranking = ranking_service.get_ranking()
                 if ranking == 0:
                     bet = 0
-                elif ranking in {RankingHelper.RANKING_ONE_PAIR, RankingHelper.RANKING_TWO_PAIRS}:
+                elif ranking in {RankingHelper.RANKING_ONE_PAIR, RankingHelper.RANKING_TWO_PAIRS,
+                                 RankingHelper.RANKING_DRILL}:
                     bet = self._handle_one_pair(call_value, hand_cards)
                 elif ranking >= RankingHelper.RANKING_STRAIGHT:
                     bet = all_in_value
