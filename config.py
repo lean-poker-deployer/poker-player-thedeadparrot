@@ -21,7 +21,7 @@ class Config(object):
         r = urllib.urlopen(CONFIG_JSON_URL)
         config_json = json.load(r)
 
-        for k, v in config_json:
+        for k, v in config_json.iteritems():
             self.__setattr__(k, v)
 
     def _start_thread(self):
