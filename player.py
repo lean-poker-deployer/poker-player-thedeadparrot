@@ -31,4 +31,3 @@ class Player:
 
     def showdown(self, game_state):
         log.info("number_of_community_cards", len(game_state['community_cards']))
-        pass
