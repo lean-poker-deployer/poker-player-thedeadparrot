@@ -18,13 +18,14 @@ class Player:
     def betRequest(self, game_state):
         in_action = game_state['in_action']
         current_player = game_state['players'][in_action]
-        cards = current_player['hole_cards']
-        helper = RankingHelper(cards)
+        hand_cards = current_player['hand_cards']
+        all_cards = hand_cards + game_state['community_cards']
+        # helper = RankingHelper(all_cards)
 
         call_value = game_state['current_buy_in'] - current_player['bet'] + game_state['minimum_raise']
 
-        if helper.is_pair():
-            if cards[0]['rank'] in ("Q", "K", "A"):
+        if hand_cards[0]['rank'] == hand_cards[1]['rank']:
+            if hand_cards[0]['rank'] in ("Q", "K", "A"):
                 log.info('All in (or at least 1000)')
                 return call_value + randint(100, 200)
 
