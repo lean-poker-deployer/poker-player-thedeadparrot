@@ -1,6 +1,6 @@
 
 class Player:
-    VERSION = "Default Python allin player"
+    VERSION = "The Dead Parrot"
 
     def betRequest(self, game_state):
         in_action = game_state['in_action']
