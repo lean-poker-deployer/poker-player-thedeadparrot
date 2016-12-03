@@ -28,15 +28,11 @@ class Player:
 
         call_value = game_state['current_buy_in'] - current_player['bet'] + game_state['minimum_raise']
 
-        if helper.is_pair():
-            if cards[0]['rank'] in ("Q", "K", "A"):
+        if hand_cards[0]['rank'] == hand_cards[1]['rank']:
+            if hand_cards[0]['rank'] in ("Q", "K", "A"):
                 bet = call_value + self.config.bet_on_high_pair + randint(100, 200)
                 log.info('betting: %d', bet)
                 return bet
-        if hand_cards[0]['rank'] == hand_cards[1]['rank']:
-            if hand_cards[0]['rank'] in ("Q", "K", "A"):
-                log.info('All in (or at least 1000)')
-                return call_value + randint(100, 200)
 
             bet = call_value + self.config.bet_on_pair
             log.info('betting: %d', bet)
