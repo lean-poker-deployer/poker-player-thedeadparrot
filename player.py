@@ -18,7 +18,7 @@ class Player:
     def betRequest(self, game_state):
         in_action = game_state['in_action']
         current_player = game_state['players'][in_action]
-        hand_cards = current_player['hand_cards']
+        hand_cards = current_player['hole_cards']
         all_cards = hand_cards + game_state['community_cards']
         # helper = RankingHelper(all_cards)
 
